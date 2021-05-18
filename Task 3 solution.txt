@@ -1,0 +1,314 @@
+1.Print odd numbers in an array:
+-------------------------------
+Anonymous function:
+==================
+
+var oddNum =  function(arr){
+ var res = " ";
+ for(var i=0;i<arr.length;i++)
+ {
+     if((arr[i] % 2) !== 0)
+     {
+        res = res + arr[i] + " ";
+     }
+  }
+ return res;
+};
+console.log(oddNum(['7','5','4','8','3','9']));
+
+IIFE:
+====
+
+(function(arr){
+	var res = " ";
+ for(var i=0;i<arr.length;i++)
+ {
+     if((arr[i] % 2) !== 0)
+     {
+        res = res + arr[i] + " ";
+     }
+  }
+ console.log(res);
+})(['7','5','4','8','3','9']);
+
+2. Convert all the strings to title caps in a string array.
+----------------------------------------------------------
+
+Anonymous function:
+==================
+
+var caps = function (str) {
+var res = " ";
+  for (var j = 0; j < str.length; j++)
+  {
+     str[j] = str[j].toLowerCase();
+     str[j] = str[j].charAt(0).toUpperCase() + str[j].slice(1);
+    res = res + str[j] + " ";
+  }
+ return res;
+};
+console.log(caps(['welcome','to','guvi','zen','classes']));
+});
+
+IIFE:
+====
+(function (str) {
+var res = " ";
+  for (var j = 0; j < str.length; j++)
+  {
+     str[j] = str[j].toLowerCase();
+     str[j] = str[j].charAt(0).toUpperCase() + str[j].slice(1);
+    res = res + str[j] + " ";
+  }
+ console.log(res);
+})(['welcome','to','guvi','zen','classes']);
+
+3. Sum of all numbers in an array :
+----------------------------------
+
+Anonymous function:
+==================
+
+var sumFun = function (str) {
+var sum=0;
+  for (var j = 0; j < str.length; j++)
+  {
+     sum = sum + parseInt(str[j]);
+  }
+ return sum;
+};
+console.log(sumFun(['7','6','4','2','3']));
+
+IIFE:
+=====
+
+(function (str) {
+var sum=0;
+  for (var j = 0; j < str.length; j++)
+  {
+     sum = sum + parseInt(str[j]);
+  }
+ console.log(sum);
+})(['7','6','4','2','4']);
+
+4. Return all the prime numbers in an array:
+-------------------------------------------
+
+Anonymous function:
+==================
+var primeNum = function (str) {
+var res =" ";
+for ( var i=0; i<str.length; i++)
+{
+if( parseInt(str[i]) > 2 ){
+    var count = 0;
+  for (var j = 2; j < parseInt(str[i]); j++)
+  {
+     if (parseInt(str[i])%j === 0)
+     count =  count +1;
+   } 
+  if(count === 0)
+  res = res + parseInt(str[i]) + " ";
+}
+}
+return res;
+};
+console.log(primeNum(['7','6','3','19','23']));
+
+
+IIFE:
+====
+(function (str) {
+var res =" ";
+for ( var i=0; i<str.length; i++)
+{
+if( parseInt(str[i]) > 2 ){
+    var count = 0;
+  for (var j = 2; j < parseInt(str[i]); j++)
+  {
+     if (parseInt(str[i])%j === 0)
+     count =  count +1;
+   } 
+  if(count === 0)
+  res = res + parseInt(str[i]) + " ";
+}
+}console.log(res);
+})(['7','6','3','19','23']);
+
+5. Return all the palindromes in an array:
+-----------------------------------------
+
+Anonymous function:
+==================
+
+var palindrome = function (str) {
+var res =" ";
+var revStr = [];
+for ( var i=0; i<str.length; i++)
+{
+    
+    str[i] = str[i].toLowerCase();
+    revStr = str[i].split("").reverse().join("");
+    if (str[i] === revStr)
+    res = res + str[i] + " ";
+}
+return res;
+};
+console.log(palindrome(['Dog','lol','apple','pop','did']));
+
+IIFE:
+====
+
+(function (str) {
+var res =" ";
+var revStr = [];
+for ( var i=0; i<str.length; i++)
+{
+    
+    str[i] = str[i].toLowerCase();
+    revStr = str[i].split("").reverse().join("");
+    if (str[i] === revStr)
+    res = res + str[i] + " ";
+}
+console.log(res);
+})(['Dog','lol','apple','pop','did']);
+});
+
+6. Return median of two sorted arrays of same size:
+---------------------------------------------------
+
+Anonymous function:
+==================
+
+let median = function(arr1,arr2){
+let result = [...arr1, ...arr2];
+let sArr = result.sort((a,b) => a-b);
+let i=0, j=1, count=0;
+while(j<sArr.length){
+    if(sArr[j] !== sArr[i])
+    {
+        i++;
+        sArr[i]=sArr[j];
+        j++;
+        count ++;
+    }
+    else 
+    j++;
+}
+let res = sArr.slice(0,count+1);
+let len = res.length;
+let halfLen = len/2;
+let medianVal;
+if(len%2 !==0)
+    medianVal = sArr[(len -1)/2];
+else
+    medianVal = (sArr[halfLen]+sArr[halfLen-1])/2;
+return medianVal;
+};
+console.log(median([1,5,10,4,2,1],[2,9,6,8,3,8,7]));
+
+IIFE:
+====
+
+(function(arr1,arr2){
+let result = [...arr1, ...arr2];
+let sArr = result.sort((a,b) => a-b);
+let i=0, j=1, count=0;
+while(j<sArr.length){
+    if(sArr[j] !== sArr[i])
+    {
+        i++;
+        sArr[i]=sArr[j];
+        j++;
+        count ++;
+    }
+    else 
+    j++;
+}
+let res = sArr.slice(0,count+1);
+let len = res.length;
+let halfLen = len/2;
+let medianVal;
+if(len%2 !==0)
+    medianVal = sArr[(len -1)/2];
+else
+    medianVal = (sArr[halfLen]+sArr[halfLen-1])/2;
+console.log(medianVal);
+})([1,5,10,4,2,1],[2,9,6,8,3,8,7]);
+
+
+7. Remove duplicates from an array:
+----------------------------------
+
+Anonymous function:
+==================
+
+var remDup = function(arr){
+var sArr = arr.sort();
+var i=0;
+var j=1;
+var count = 0;
+while(j<sArr.length){
+    if(sArr[j] !== sArr[i])
+    {
+        i++;
+        sArr[i]=sArr[j];
+        j++;
+        count ++;
+    }
+    else 
+    j++;
+}
+var res = sArr.slice(0,count+1);
+return res;
+};
+console.log(remDup([1,2,3,4,2,5,3,2,4,6]));
+
+IIFE:
+====
+
+(function(arr){
+var sArr = arr.sort();
+var i=0;
+var j=1;
+var count = 0;
+while(j<sArr.length){
+    if(sArr[j] !== sArr[i])
+    {
+        i++;
+        sArr[i]=sArr[j];
+        j++;
+        count ++;
+    }
+    else 
+    j++;
+}
+var res = sArr.slice(0,count+1);
+console.log(res);
+}([1,2,3,4,2,5,3,2,4,6]));
+
+8. Rotate an array by k times and return the rotated array:
+----------------------------------------------------------
+
+Anonymous function:
+==================
+
+var rot = function(nums,k){
+	for (let i=0; i<k; i++)
+	{
+		nums.unshift(nums.pop());
+	}
+	return nums;
+};
+console.log(rot(['1','2','3'],1));
+
+IIFE:
+====
+
+(function(nums,k){
+	for (let i=0; i<k; i++)
+	{
+		nums.unshift(nums.pop());
+	}
+	console.log(nums);
+})(['1','2','3'],1);
